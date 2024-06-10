@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Sube1.HelloMVC.Models.Ders>
+
+@{
+    ViewData["Title"] = "Ders Listesi";
+}
+
+<h1>Ders Listesi</h1>
+
+<p>
+    <a asp-action="AddDers" class="btn btn-primary">Yeni Ders Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ders Adı</th>
+            <th>Kredi</th>
+            <th>Öğrenci Sayısı</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Dersad</td>
+                <td>@item.Kredi</td>
+                <td>@item.OgrenciDersler.Count</td>
+                <td>
+                    <a asp-action="EditDers" asp-route-id="@item.Dersid" class="btn btn-secondary">Düzenle</a>
+                    <form asp-action="DeleteDers" asp-route-id="@item.Dersid" method="post" style="display:inline">
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

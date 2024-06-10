@@ -1,0 +1,76 @@
+﻿@model Sube1.HelloMVC.ViewModels.OgrenciViewModel
+
+@{
+    ViewData["Title"] = "Yeni Öğrenci";
+}
+
+<h1 class="mb-4 text-center text-primary">Yeni Öğrenci</h1>
+
+<div class="card shadow-lg border-0 rounded-lg">
+    <div class="card-header bg-primary text-white">
+        <h4 class="card-title mb-0">Öğrenci Bilgileri</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="AddOgrenci">
+            <div class="form-group">
+                <label asp-for="Ogrenci.Ad" class="control-label"></label>
+                <input asp-for="Ogrenci.Ad" class="form-control rounded-pill" />
+                <span asp-validation-for="Ogrenci.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogrenci.Soyad" class="control-label"></label>
+                <input asp-for="Ogrenci.Soyad" class="form-control rounded-pill" />
+                <span asp-validation-for="Ogrenci.Soyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ogrenci.Numara" class="control-label"></label>
+                <input asp-for="Ogrenci.Numara" class="form-control rounded-pill" />
+                <span asp-validation-for="Ogrenci.Numara" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="selectedDersler" class="control-label">Dersler</label>
+                <select asp-for="SelectedDersler" class="form-control rounded-pill" asp-items="@(new MultiSelectList(Model.Dersler, "Dersid", "Dersad"))" multiple="multiple"></select>
+            </div>
+            <div class="form-group text-right">
+                <input type="submit" value="Kaydet" class="btn btn-primary rounded-pill shadow-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3 text-center">
+    <a asp-action="Index" class="btn btn-secondary rounded-pill shadow-sm">Geri</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #04f1fe, #2575fc);
+        color: #fff;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+    }
+
+    .btn-primary {
+        background-color: #6a11cb;
+        border-color: #6a11cb;
+    }
+
+    .btn-secondary {
+        background-color: #2575fc;
+        border-color: #2575fc;
+    }
+
+    .text-primary {
+        color: #6a11cb !important;
+    }
+</style>

@@ -1,0 +1,32 @@
+﻿@model Sube1.HelloMVC.Models.Ders
+
+@{
+    ViewData["Title"] = "Ders Düzenle";
+}
+
+<h1>Ders Düzenle</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDers">
+            <div class="form-group">
+                <label asp-for="Dersad" class="control-label"></label>
+                <input asp-for="Dersad" class="form-control" />
+                <span asp-validation-for="Dersad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kredi" class="control-label"></label>
+                <input asp-for="Kredi" class="form-control" />
+                <span asp-validation-for="Kredi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Geri</a>
+</div>
